@@ -5,6 +5,31 @@
 </head>
 
 <body>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyXXXX",
+    authDomain: "iit-warrior-tracker.firebaseapp.com",
+    projectId: "iit-warrior-tracker",
+    appId: "1:763090319429:web:70e73610d06c140e484b2c"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  window.googleLogin = function () {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        alert("Logged in as " + result.user.email);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+</script>
 
   <h2>My Tracker</h2>
 
